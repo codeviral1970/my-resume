@@ -24,3 +24,10 @@ btn.addEventListener('click', () => {
 mobile_menu.addEventListener('click', () => {
     mobile_menu.classList.add('hidden');
 })
+
+const message = document.getElementById('#message');
+
+// setTimeout(() => {
+//     //alert('toto');
+//     message.classList.add('hidden');
+// }, 5000); 
