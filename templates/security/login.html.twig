@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+{% include "components/_nav.html.twig" with {class: 'line'} %}
+
+<div class="flex justify-center items-center w-screen h-screen ">
+<div class="w-3/6">
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <h1 class="text-xl text-center font-bold mb-10">Se connecter</h1>
+            <label for="inputEmail" class="text-white block mb-1 text-xl font-bold">Votre email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="w-full border border-input-border bg-input px-4 py-4" autocomplete="email" required autofocus>
+            <label for="inputPassword" class="text-white block mb-1 mt-5 text-xl font-bold">Votre mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="w-full border border-input-border bg-input px-4 py-4" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+            <button class="mt-10 px-6 py-2 bg-theme text-white font-bold rounded-md" type="submit">
+                Se connecter
+            </button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
