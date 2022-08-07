@@ -2,31 +2,31 @@
 	<section class="w-full">
 		<h2 id="hire" class="secondary-title">Contact</h2>
 		<p class="section-paragraph">Envoyer moi un message pour un devis ou renseignement.</p> 
-        <div id="#message" class="">
-            {% if message is not null %}
-                {{message}}
-            {% endif %}
-        </div>
+  <div id="#message" class="">
+      {% if message is not null %}
+    {{message}}
+      {% endif %}
+  </div>
 		<div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-24">
 			<div class="space-y-12">
-                <div class="my-7" id="contactMe">
-                    <form action="{{ path('app_contact') }}" method="post" }}>
-                    {# {{form_start(form, {action:path('app_home')}, {methods:('POST')}) }} #}
-                    {{form_start(form)}}
-                    {{form_widget(form)}}
-                    {{form_end(form)}}
-                    </form>
-                </div>
+    <div class="my-7" id="contactMe">
+          <form action="{{ path('app_contact') }}" method="post" }}>
+          {# {{form_start(form, {action:path('app_home')}, {methods:('POST')}) }} #}
+          {{form_start(form)}}
+          {{form_widget(form)}}
+          {{form_end(form)}}
+          </form>
+    </div>
 			</div>
 			<div class="mt-12 flex flex-col justify-center items-center w-full space-y-5">
-				{# contact info #}
-                <div class="border border-yellow-300 w-full h-full p-5 text-center">
-                    <p class="text-secondary">0678098960</p>
-				    <a href="mailto:manbanhduc@gmail.com" class="pt-24 underline text-secondary">Me contacter</a>
-                </div>
-                <div class="border border-red-400 w-full h-full overflow-hidden mx-auto">
-                    
-                </div>
+  {# contact info #}
+    <div class="border border-yellow-300 w-full h-full p-5 text-center">
+          <p class="text-secondary">0678098960</p>
+  <a href="mailto:manbanhduc@gmail.com" class="pt-24 underline text-secondary">Me contacter</a>
+    </div>
+    <div class="border border-red-400 w-full h-full overflow-hidden mx-auto">
+          
+    </div>
 			</div>
 		</div>
 	</section>

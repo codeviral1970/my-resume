@@ -1,14 +1,15 @@
 <div class="container mt-64 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
 	<section class="w-full">
-		<h2 id="services" class="secondary-title">Services</h2>
-		<p class="section-paragraph">
-		Auto entrepreneur depuis plus d'un an je propose un site 
-		- Création de site vitrine. 
-		- Création de votre site E-commerce. 
-		- Création de votre blog.  
-		- Améliorer votre back end.
-		- SEO  
-		- Ou fonctionalité pour votre application.  
-		</p>
+		<h2 id="services" class="secondary-title mb-10">Services</h2>
+		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+			{% for service in services %}
+				<div class="p-4 mx-auto border border-theme rounded">
+					<h3 class="text-center font-bold uppercase">{{service.title}}</h3>
+					<p class="p-5">
+						{{service.description | raw}}
+					</p>
+				</div>
+			{% endfor %}
+		</div>
 	</section>
 </div>

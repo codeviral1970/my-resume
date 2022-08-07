@@ -11,7 +11,7 @@
 		<div class="text-lg font-bold">
           <a href="{{path('app_home')}}">CODE VIRAL</a>  
         </div>
-		<div class="hidden sm:hidden md:flex space-x-12 items-center">
+		<div class="hidden md:hidden lg:flex space-x-12 items-center">
 			<a href="{{ path('app_home') }}#home" class="text-selected-text">Accueil</a>
 			<a href="{{ path('app_about') }}">A propos</a>
 			<a href="{{ path('app_home') }}#services">Services</a>
@@ -24,7 +24,7 @@
 			</a>
 		</div>
         {# mobile #}
-		<div class="md:hidden">
+		<div class="lg:hidden">
             <button class="mobile-menu-button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
@@ -33,7 +33,7 @@
 		</div>
      
 	</div>
-    <div class="mobile-menu hidden md:hidden text-center px-10 py-5 space-y-3 border border-bg-theme mx-5">
+    <div class="mobile-menu hidden text-center px-10 py-5 space-y-3 border border-bg-theme mx-5">
         <a href="#home" class="block hover:text-selected-text">Accueil</a>
         <a href="#work" class="block hover:text-selected-text">A propos</a>
         <a href="#services" class="block hover:text-selected-text">Services</a>

@@ -12,24 +12,24 @@ use Symfony\Component\Mailer\MailerInterface;
 class MailerService
 {
    
-    public function __construct(
-        private MailerInterface $mailer, 
-        private ContactRepository $contactRepo)
-    {}
+  public function __construct(
+    private MailerInterface $mailer, 
+    private ContactRepository $contactRepo)
+  {}
 
-    public function sendEmail(): void
-    {
-        $contact = new Contact();
+  public function sendEmail(string $email, string $subject, string $userName, string $message)
+  {
+      
+    $email = (new TemplatedEmail())
+      ->from($email)
+      ->to('manbanhduc@gmail.com')
+      ->subject($subject)
+      ->htmlTemplate('email/welcome.html.twig')
+      ->context([
+        'user' => $userName,
+        'message' => $message
+      ]);
 
-        $email = (new TemplatedEmail())
-            ->from($contact->getEmail())
-            ->to('manbanhduc@gmail.com')
-            ->subject($contact->getSubject())
-            ->htmlTemplate('email/welcome.html.twig')
-            ->context([
-                'user' => $contact->getName()
-            ]);
-
-            $this->mailer->send($email);
-    }
+      $this->mailer->send($email);
+  }
 }

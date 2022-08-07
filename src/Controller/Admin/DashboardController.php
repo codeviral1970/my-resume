@@ -2,8 +2,16 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\UserCrudController;
+use App\Entity\Info;
 use App\Entity\User;
+use App\Entity\About;
+use App\Entity\Skill;
+use App\Entity\Hobbies;
+use App\Entity\Services;
+use App\Entity\Education;
+use App\Entity\Experience;
+use App\Entity\ExperienceItem;
+use App\Controller\Admin\UserCrudController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -58,7 +66,18 @@ class DashboardController extends AbstractDashboardController
     {
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::linkToCrud('User', 'fas fa-user', User::class)
+            MenuItem::linkToCrud('User', 'fas fa-user', User::class),
+            MenuItem::subMenu('Resume', 'fa fa-article')->setSubItems([
+              MenuItem::linkToCrud('About', 'fa fa-tags', About::class),
+              MenuItem::linkToCrud('Info', 'fa fa-address-book-o', Info::class),
+              MenuItem::linkToCrud('Skill', 'fa fa-comment', Skill::class),
+              MenuItem::linkToCrud('Hobies', 'fa fa-gamepad', Hobbies::class),
+              MenuItem::linkToCrud('Experience', 'fa fa-comment', Experience::class),
+              MenuItem::linkToCrud('Experience item', 'fa fa-comment', ExperienceItem::class),
+              MenuItem::linkToCrud('Education', 'fa fa-graduation-cap', Education::class),
+              MenuItem::linkToCrud('Services', 'fa fa-shopping-cart', Services::class)
+                
+        ]),
 
         ];
     }
