@@ -33,7 +33,7 @@ body {
 
 .line::before {
     content: "";
-    @apply block w-full h-1 bg-theme mb-1;
+    @apply block w-full h-[1px] bg-theme mb-1;
 }
 
 .section-paragraph {
