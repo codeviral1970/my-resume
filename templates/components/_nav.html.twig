@@ -13,28 +13,28 @@
     </div>
     <div class="relative">
       <div class="hidden sm:hidden md:flex space-x-12 items-center">
-          <a href="{{ path('app_home') }}#home" class="text-selected-text group">
+          <a href="{{ path('app_home') }}#home" class="text-selected-text group uppercase">
           Accueil
           <span class="absolute w-[60px] h-1 bg-theme bottom-0 left-0 rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
           </a>
-          <a class="group" href="{{ path('app_about') }}">
-          A propos
-          <span class="absolute w-[60px] h-1 bg-theme bottom-0 left-[110px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
+          <a class="group uppercase" href="{{ path('app_about') }}">
+          CV
+          <span class="absolute w-[30px] h-1 bg-theme bottom-0 left-[100px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
           </a>
-          <a class="group" href="{{ path('app_home') }}#services">
-          Services
-          <span class="absolute w-[70px] h-1 bg-theme bottom-0 left-[222px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
-          </a>
-          <a class="group" href="{{ path('app_home') }}#blog">
+           <a class="group uppercase" href="{{ path('app_home') }}#services">
+          Blog
+          <span class="absolute w-[40px] h-1 bg-theme bottom-0 left-[173px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
+          </a> 
+          {# <a class="group" href="{{ path('app_home') }}#blog">
           Blog
           <span class="absolute w-[40px] h-1 bg-theme bottom-0 left-[333px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
-          </a>
+          </a> #}
           
-  <a href="{{ path('app_contact') }}">
-          <button class="px-6 py-2 bg-theme font-bold rounded-md">Contact </button>
+  <a href="{{ path('app_contact') }}" >
+          <button class="px-6 py-2 bg-theme font-bold rounded-md uppercase">Contact </button>
   </a>
   <a href="{{ path('app_admin') }}">
-          <button class="sm:hidden px-6 py-2 bg-theme font-bold rounded-md">Se connecter</button>
+          <button class="sm:hidden px-6 py-2 bg-theme font-bold rounded-md">Se <span class="uppercase">connecter</span></button>
   </a>
       </div>
     </div>

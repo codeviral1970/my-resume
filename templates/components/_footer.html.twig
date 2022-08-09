@@ -17,11 +17,17 @@
             <div class="col-span-1">
                 <ul>
                     <li>
-                        <a href="{{ path('app_home') }}#home">Accueil</a>  
+                        <a href="{{ path('app_home') }}" class="hover:text-selected-text">Accueil</a>  
                     </li>
-                    <li>A propos</li>
-                    <li>Blog</li>
-                    <li>Contact</li>
+                    <li>
+                        <a href="{{ path('app_about') }}" class="hover:text-selected-text">Cv</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_about') }}" class="hover:text-selected-text">Blog</a>    
+                    </li>
+                    <li>
+                        <a href="{{ path('app_contact') }}" class="hover:text-selected-text">Contact</a>
+                    </li>
                 </ul>
             </div>
         </div>

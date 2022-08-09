@@ -2,17 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Info;
+use App\Entity\MyWork;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class InfoCrudController extends AbstractCrudController
+class MyWorkCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Info::class;
+        return MyWork::class;
     }
 
     
@@ -20,22 +20,12 @@ class InfoCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('firstName'),
-            TextField::new('lastName'),
-            TextField::new('email'),
-            TextField::new('phone'),
-            TextField::new('address'),
-            TextField::new('firstName'),
+            TextField::new('name'),
             ImageField::new('illustration', 'Image')
                 ->setBasePath('images/')
                 ->setUploadDir('public/images')
                 ->setUploadedFileNamePattern(('[randomhash].[extension]'))
                 ->setRequired(false),
-
-
-
-
-           
         ];
     }
     

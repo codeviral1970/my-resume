@@ -26,9 +26,4 @@ mobile_menu.addEventListener('click', () => {
 })
 
 const message = document.getElementById('#message');
-
-
-// setTimeout(() => {
-//     //alert('toto');
-//     message.classList.add('hidden');
-// }, 5000); 
+ 

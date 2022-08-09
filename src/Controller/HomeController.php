@@ -10,6 +10,7 @@ use App\Repository\ExperienceItemRepository;
 use App\Repository\ExperienceRepository;
 use App\Repository\HobbiesRepository;
 use App\Repository\InfoRepository;
+use App\Repository\MyWorkRepository;
 use App\Repository\ServicesRepository;
 use App\Repository\SkillRepository;
 use App\Services\GetContactService;
@@ -40,7 +41,8 @@ class HomeController extends AbstractController
    private ExperienceRepository $experience,
    private ExperienceItemRepository $experienceItem,
    private EducationRepository $education,
-   private ServicesRepository $services)
+   private ServicesRepository $services,
+   private MyWorkRepository $work)
   {
     $this->about = $about;
   }
@@ -49,9 +51,11 @@ class HomeController extends AbstractController
   public function index(): Response
   {
     $services = $this->services->findAll();
+    $works = $this->work->findAll();
 
     return $this->render('home/index.html.twig', [
-      'services' => $services
+      'services' => $services,
+      'works' => $works
     ]);
   }
 
@@ -65,7 +69,6 @@ class HomeController extends AbstractController
     $experiences = $this->experience->findAll();
     $educations = $this->education->findAll();
   
-    // dd($experiences);
 
     return $this->render('home/about.html.twig', [
       'abouts' => $abouts,

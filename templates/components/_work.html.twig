@@ -1,0 +1,35 @@
+<div class="container mt-64 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
+  <section class="w-full">
+    <h2 id="MyWork" class="secondary-title">Mes références</h2>
+    <p class="section-paragraph">Toutes mes références de portails web réalisés.</p>
+    {# Mobile style #}
+    <div class="grid grid-cols-2 place-items-center  md:grid-cols-3 lg:grid-cols-5 gap-3 mt-6">
+    {% for work in works %}
+      <div class="relative w-[185px] h-[360px] bg-black rounded-[40px] shadow-xl overflow-hidden border-[14px] border-black">
+		    <img src="images/{{work.illustration}}" alt="{{work.name}}" class="absolute w-full h-full inset-0 object-cover">
+		    <div class="absolute top-0 inset-x-0">
+			    <div class="h-2 w-20 mx-auto bg-black rounded-b-3xl"></div>
+		    </div>
+		    <div class="relative">
+			    <div class="mt-1 mr-2 flex justify-end space-x-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+              <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+            </svg>
+          </div>
+			    <div class="h-0.5 w-8 bg-white ml-auto mr-2 mt-1 rounded"></div>
+        </div>
+	    </div>
+    {% endfor %}
+    </div>
+    {# end mobile  #}
+
+  </section>
+</div>
+

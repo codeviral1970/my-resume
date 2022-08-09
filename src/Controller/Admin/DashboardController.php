@@ -12,6 +12,7 @@ use App\Entity\Education;
 use App\Entity\Experience;
 use App\Entity\ExperienceItem;
 use App\Controller\Admin\UserCrudController;
+use App\Entity\MyWork;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -67,7 +68,8 @@ class DashboardController extends AbstractDashboardController
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
             MenuItem::linkToCrud('User', 'fas fa-user', User::class),
-            MenuItem::subMenu('Resume', 'fa fa-article')->setSubItems([
+            MenuItem::linkToCrud('MyWork', 'fa fa-building-o', MyWork::class),
+            MenuItem::subMenu('Resume', 'fas fa-article')->setSubItems([
               MenuItem::linkToCrud('About', 'fa fa-tags', About::class),
               MenuItem::linkToCrud('Info', 'fa fa-address-book-o', Info::class),
               MenuItem::linkToCrud('Skill', 'fa fa-comment', Skill::class),

@@ -28,6 +28,9 @@ class Info
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
+    #[ORM\Column(length:255)]
+    private ?string $illustration;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,8 +92,20 @@ class Info
     public function setAddress(string $address): self
     {
         $this->address = $address;
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(string $illustration): self
+    {
+        $this->illustration = $illustration;
 
         return $this;
     }
+
 
 }
