@@ -1,5 +1,12 @@
 doctrine:
     dbal:
+        # configure these for your database server
+        driver: 'pdo_mysql'
+        server_version: '5.7'
+        charset: utf8mb4
+        default_table_options:
+          charset: utf8mb4
+          collate: utf8mb4_unicode_ci
         url: '%env(resolve:DATABASE_URL)%'
 
         # IMPORTANT: You MUST configure your server version,
@@ -21,14 +28,7 @@ when@test:
         dbal:
             # "TEST_TOKEN" is typically set by ParaTest
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
-            # configure these for your database server
-            driver: 'pdo_mysql'
-            server_version: '5.7'
-            charset: utf8mb4
-            default_table_options:
-              charset: utf8mb4
-              collate: utf8mb4_unicode_ci
-            url: '%env(resolve:DATABASE_URL)%'
+            
 
 when@prod:
     doctrine:
