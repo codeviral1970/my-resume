@@ -1,3 +1,5 @@
+{% set route = app.request.attributes.get('_route') %}
+
 <header class="py-6">
   <div class="container
               flex
@@ -13,23 +15,32 @@
     </div>
     <div class="relative">
       <div class="hidden sm:hidden md:flex space-x-12 items-center">
-          <a href="{{ path('app_home') }}#home" class="text-selected-text group uppercase">
-          Accueil
-          <span class="absolute w-[60px] h-1 bg-theme bottom-0 left-0 rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
-          </a>
-          <a class="group uppercase" href="{{ path('app_about') }}">
-          CV
-          <span class="absolute w-[30px] h-1 bg-theme bottom-0 left-[100px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
-          </a>
-           <a class="group uppercase" href="{{ path('app_home') }}#services">
-          Blog
-          <span class="absolute w-[40px] h-1 bg-theme bottom-0 left-[173px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
-          </a> 
+        <ul class="flex space-x-12">
+          <li class="nav-item {% if route == 'app_home' %} text-theme {% endif %}">
+            <a href="{{ path('app_home') }}#home" class=" group uppercase">
+            Accueil
+            <span class="absolute w-[60px] h-1 bg-theme bottom-0 left-0 rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
+            </a>
+          </li>
+
+          <li class="nav-item {% if route == 'app_about' %} active {% endif %}">
+            <a class="group uppercase" href="{{ path('app_about') }}">
+            CV
+            <span class="absolute w-[30px] h-1 bg-theme bottom-0 left-[110px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
+            </a>
+          </li>
+
+          <li class="nav-item {% if route == 'app_blog' %} active {% endif %}">
+            <a class="group uppercase" href="{{ path('app_blog') }}">
+            Blog
+              <span class="absolute w-[40px] h-1 bg-theme bottom-0 left-[185px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
+            </a> 
+          </li>
           {# <a class="group" href="{{ path('app_home') }}#blog">
           Blog
           <span class="absolute w-[40px] h-1 bg-theme bottom-0 left-[333px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
           </a> #}
-          
+        </ul>
   <a href="{{ path('app_contact') }}" >
           <button class="px-6 py-2 bg-theme font-bold rounded-md uppercase">Contact </button>
   </a>
@@ -46,7 +57,6 @@
         </svg>
       </button>
     </div>
-     
   </div>
   <div class="mobile-menu hidden md:hidden text-center px-10 py-5 space-y-3 border border-bg-theme mx-5">
     <a href="#home" class="block hover:text-selected-text">Accueil</a>
@@ -55,14 +65,3 @@
     <a href="#blog" class="block hover:text-selected-text">Blog</a>
   </div>
 </header>
-
-
-
-
-
-
-
-
-
-
-

@@ -2,23 +2,24 @@
 
 namespace App\Controller;
 
+use Twig\TwigFunction;
 use App\Entity\Contact;
 use App\Form\ContactType;
-use App\Repository\AboutRepository;
-use App\Repository\EducationRepository;
-use App\Repository\ExperienceItemRepository;
-use App\Repository\ExperienceRepository;
-use App\Repository\HobbiesRepository;
-use App\Repository\InfoRepository;
-use App\Repository\MyWorkRepository;
-use App\Repository\ServicesRepository;
-use App\Repository\SkillRepository;
-use App\Services\GetContactService;
 use Psr\Log\LoggerInterface;
 use App\Services\MailerService;
 use Symfony\Component\Mime\Email;
+use App\Repository\InfoRepository;
+use App\Repository\AboutRepository;
+use App\Repository\SkillRepository;
+use App\Services\GetContactService;
+use App\Repository\MyWorkRepository;
+use App\Repository\HobbiesRepository;
 use Symfony\Component\Form\FormError;
+use App\Repository\ServicesRepository;
+use App\Repository\EducationRepository;
+use App\Repository\ExperienceRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ExperienceItemRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -35,19 +36,24 @@ class HomeController extends AbstractController
 
   public function __construct(
     AboutRepository $about,
-   private SkillRepository $skill,
-   private HobbiesRepository $hobbie,
-   private InfoRepository $info,
-   private ExperienceRepository $experience,
-   private ExperienceItemRepository $experienceItem,
-   private EducationRepository $education,
-   private ServicesRepository $services,
-   private MyWorkRepository $work)
+    private SkillRepository $skill,
+    private HobbiesRepository $hobbie,
+    private InfoRepository $info,
+    private ExperienceRepository $experience,
+    private ExperienceItemRepository $experienceItem,
+    private EducationRepository $education,
+    private ServicesRepository $services,
+    private MyWorkRepository $work)
   {
     $this->about = $about;
   }
 
-  #[Route('/', name: 'app_home')]
+  #[Route('/', name: 'app_home')]  
+  /**
+   * index route 
+   *
+   * @return Response
+   */
   public function index(): Response
   {
     $services = $this->services->findAll();
@@ -59,7 +65,12 @@ class HomeController extends AbstractController
     ]);
   }
 
-  #[Route('/a-propos', name: 'app_about')]
+  #[Route('/a-propos', name: 'app_about')]  
+  /**
+   * about route 
+   *
+   * @return void
+   */
   public function about()
   { 
     $abouts = $this->about->findAll();
@@ -81,7 +92,23 @@ class HomeController extends AbstractController
     ]);
   }
 
-  #[Route('/contact', name: 'app_contact')]
+  #[Route('/blog', name: ('app_blog') )]  
+  /**
+   * blog route
+   *
+   * @return void
+   */
+  public function blog()
+  {
+    return $this->render('myBlog/blog.html.twig');
+  }
+
+  #[Route('/contact', name: 'app_contact')]  
+  /**
+   * contact route 
+   *
+   * @return void
+   */
   public function contact(
     Request $request, 
     MailerService $mailer,
@@ -120,5 +147,29 @@ class HomeController extends AbstractController
       'message' =>$message
     ]);
   }
-
+    
+    /**
+     * getFunctions
+     *
+     * @return array
+     */
+    public function getFunctions(): array
+    {
+      return [
+        new TwigFunction('actual_route', [$this, 'getActualRoute']),
+      ];
+       
+    }
+     
+    /**
+      * getActualRoute
+      *
+      * @param  mixed $value
+      * @param  mixed $route
+      * @return string
+      */
+    public function getActualRoute(string $value, string $route): string
+    {
+        return $value === $route ? 'active' : '';
+    }
 }

@@ -2,6 +2,32 @@
     "editor.defaultFormatter": "vscode.html-language-features",
     "files.autoSave": "onFocusChange",
     "editor.tabSize": 2,
+    "editor.insertSpaces": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.experimental.pasteActions.enabled": true
+    "editor.experimental.pasteActions.enabled": true,
+
+     "editor.formatOnPaste": true,
+
+     "editor.formatOnSave": true,
+
+
+	// Set up some defaults
+	"prettier.disableLanguages": ["html"],
+	"prettier.tabWidth": 2,
+	"prettier.useTabs": false,
+	"prettier.singleQuote": true,
+
+  "emmet.includeLanguages": {
+  "twig": "html",
+  "javascript": "javascriptreact"
+  },
+
+  "indentRainbow.includedLanguages": [
+    "twig"
+    "html",
+    "css",
+    "javascript",
+    "sass",
+    "php",
+  ],
 }
