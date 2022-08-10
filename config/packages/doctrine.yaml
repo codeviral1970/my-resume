@@ -23,7 +23,7 @@ when@test:
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
             # configure these for your database server
             driver: 'pdo_mysql'
-            server_version: '5.6'
+            server_version: '5.7'
 
 when@prod:
     doctrine:
