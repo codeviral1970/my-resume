@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\InfoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\TimeStampInterface;
+use App\Repository\InfoRepository;
 
 #[ORM\Entity(repositoryClass: InfoRepository::class)]
 class Info
@@ -106,6 +107,5 @@ class Info
 
         return $this;
     }
-
 
 }

@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\AboutRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AboutRepository;
 
 #[ORM\Entity(repositoryClass: AboutRepository::class)]
 class About
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -33,4 +34,5 @@ class About
 
         return $this;
     }
+
 }

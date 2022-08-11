@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ExperienceItemRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\TimeStampInterface;
+use App\Repository\ExperienceItemRepository;
 
 #[ORM\Entity(repositoryClass: ExperienceItemRepository::class)]
 class ExperienceItem
@@ -18,7 +19,6 @@ class ExperienceItem
 
     #[ORM\ManyToOne(inversedBy: 'experienceItems')]
     private ?Experience $experience = null;
-
 
     public function getId(): ?int
     {
@@ -48,4 +48,5 @@ class ExperienceItem
 
         return $this;
     }
+
 }

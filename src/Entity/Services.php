@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ServicesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\TimeStampInterface;
+use App\Repository\ServicesRepository;
 
 #[ORM\Entity(repositoryClass: ServicesRepository::class)]
 class Services
@@ -19,6 +20,7 @@ class Services
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
+
 
     public function getId(): ?int
     {
@@ -48,4 +50,5 @@ class Services
 
         return $this;
     }
+
 }

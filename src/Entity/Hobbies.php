@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\HobbiesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\TimeStampInterface;
+use App\Repository\HobbiesRepository;
 
 #[ORM\Entity(repositoryClass: HobbiesRepository::class)]
 class Hobbies
@@ -15,7 +16,7 @@ class Hobbies
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -32,4 +33,5 @@ class Hobbies
 
         return $this;
     }
+
 }

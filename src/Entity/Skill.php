@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Model\TimeStampInterface;
+use App\Repository\SkillRepository;
 
 #[ORM\Entity(repositoryClass: SkillRepository::class)]
 class Skill
@@ -15,6 +16,7 @@ class Skill
 
     #[ORM\Column(length: 100)]
     private ?string $name = null;
+
 
     public function getId(): ?int
     {
