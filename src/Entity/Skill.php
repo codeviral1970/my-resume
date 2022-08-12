@@ -17,6 +17,12 @@ class Skill
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $updatedAt = null;
+
 
     public function getId(): ?int
     {
@@ -31,6 +37,30 @@ class Skill
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
