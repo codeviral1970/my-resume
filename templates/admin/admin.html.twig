@@ -1,17 +1,18 @@
-{% extends '@!EasyAdmin/layout.html.twig' %}
+{% extends '@!EasyAdmin/page/content.html.twig' %}
 
 
 {% block sidebar %}
-	{# ... #}
+	{% block header_navbar %}
+	{% block header_logo %}{% endblock %}
+	{% endblock %}
 {% endblock %}
 
 
-{# {% block page_title %}{% endblock %} #}
-
-{# {% block content_title %}
-	{{ block('page_title') }}
+{% block content_title %}The Title of the Page{% endblock %}
+{% block page_actions %}
+    <a class="btn btn-primary" href="...">Some Action</a>
 {% endblock %}
 
 {% block main %}
-	{{ block('page_content') }}
-{% endblock %} #}
+
+{% endblock %}

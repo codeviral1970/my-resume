@@ -41,12 +41,19 @@
           <span class="absolute w-[40px] h-1 bg-theme bottom-0 left-[333px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
           </a> #}
         </ul>
-  <a href="{{ path('app_contact') }}" >
-          <button class="px-6 py-2 bg-theme font-bold rounded-md uppercase">Contact </button>
-  </a>
-  <a href="{{ path('app_admin') }}">
-          <button class="sm:hidden px-6 py-2 bg-theme font-bold rounded-md">Se <span class="uppercase">connecter</span></button>
-  </a>
+        <a href="{{ path('app_contact') }}" >
+            <button class="px-6 py-2 bg-theme font-bold rounded-md uppercase">Contact </button>
+        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+          <a href="{{ path('app_admin') }}">
+            <button class="px-6 py-2 bg-theme font-bold rounded-md">Dashboard</button>
+          </a>
+           <a href="{{ path('app_logout') }}">
+            <button class="px-6 py-2 bg-theme font-bold rounded-md">Se <span class="uppercase">Deconnecter</span></button>
+          </a>
+        {% endif %}
+
+        
       </div>
     </div>
     {# mobile #}

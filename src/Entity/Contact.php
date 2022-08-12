@@ -9,7 +9,7 @@ use App\Repository\ContactRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
-class Contact
+class Contact 
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

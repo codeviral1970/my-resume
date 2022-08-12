@@ -6,20 +6,23 @@ use App\Entity\Info;
 use App\Entity\User;
 use App\Entity\About;
 use App\Entity\Skill;
+use App\Entity\MyWork;
 use App\Entity\Hobbies;
 use App\Entity\Services;
 use App\Entity\Education;
 use App\Entity\Experience;
 use App\Entity\ExperienceItem;
 use App\Controller\Admin\UserCrudController;
-use App\Entity\MyWork;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
+use Symfony\Component\Security\Core\User\UserInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-
 
 class DashboardController extends AbstractDashboardController
 {
@@ -30,10 +33,11 @@ class DashboardController extends AbstractDashboardController
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
-
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
+      //return $this->render('admin/admin.html.twig');
       
         $url = $this->adminUrlGenerator->setController(UserCrudController::class)->generateUrl();
 
@@ -63,24 +67,50 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Code viral');
     }
 
+    public function configureUserMenu(UserInterface $user): UserMenu
+    {
+      //dd($user);
+        return parent::configureUserMenu($user)
+            ->setAvatarUrl($user->getUserIdentifier());
+    }
+
     public function configureMenuItems(): iterable
     {
-        return [
-            MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::linkToCrud('User', 'fas fa-user', User::class),
-            MenuItem::linkToCrud('MyWork', 'fa fa-building-o', MyWork::class),
-            MenuItem::subMenu('Resume', 'fas fa-article')->setSubItems([
-              MenuItem::linkToCrud('About', 'fa fa-tags', About::class),
-              MenuItem::linkToCrud('Info', 'fa fa-address-book-o', Info::class),
-              MenuItem::linkToCrud('Skill', 'fa fa-comment', Skill::class),
-              MenuItem::linkToCrud('Hobies', 'fa fa-gamepad', Hobbies::class),
-              MenuItem::linkToCrud('Experience', 'fa fa-comment', Experience::class),
-              MenuItem::linkToCrud('Experience item', 'fa fa-comment', ExperienceItem::class),
-              MenuItem::linkToCrud('Education', 'fa fa-graduation-cap', Education::class),
-              MenuItem::linkToCrud('Services', 'fa fa-shopping-cart', Services::class)
+        
+      return [
+        MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard'),
+          
+        MenuItem::linkToCrud('User', 'fas fa-user', User::class),
+          
+        MenuItem::linkToCrud('MyWork', 'fa fa-building-o', MyWork::class),
+        
+        MenuItem::subMenu('Resume', 'fas fa-article')->setSubItems([
+          
+          MenuItem::linkToCrud('About', 'fa fa-tags', About::class),
+        
+          MenuItem::linkToCrud('Info', 'fa fa-address-book-o', Info::class),
+
+          MenuItem::linkToCrud('Skill', 'fa fa-comment', Skill::class),
+
+          MenuItem::linkToCrud('Hobies', 'fa fa-gamepad', Hobbies::class),
+          
+          MenuItem::linkToCrud('Experience', 'fa fa-comment',  Experience::class),
+          
+          MenuItem::linkToCrud('Experience item', 'fa fa-comment', ExperienceItem::class),
+          
+          MenuItem::linkToCrud('Education', 'fa fa-graduation-cap', Education::class),
+          
+          MenuItem::linkToCrud('Services', 'fa fa-shopping-cart', Services::class),
                 
         ]),
+        MenuItem::linkToUrl('Homepage', 'fas fa-home', $this->generateUrl('app_home')),
 
         ];
+    }
+
+    public function configureAssets(): Assets
+    {
+        return parent::configureAssets()
+            ->addWebpackEncoreEntry('admin');
     }
 }

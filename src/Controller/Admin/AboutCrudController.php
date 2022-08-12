@@ -22,9 +22,13 @@ class AboutCrudController extends AbstractCrudController
     {
       
       yield IdField::new('id')->hideOnForm();
+
       yield TextEditorField::new('description');
-      yield DateTimeField::new('createdAt')->hideOnForm();
-      yield DateTimeField::new('updatedAt')->hideOnForm();
+
+      yield DateTimeField::new('createdAt')
+       ->hideOnForm();
+      yield DateTimeField::new('updatedAt')
+        ->hideOnForm();
 
     }
     

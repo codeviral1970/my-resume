@@ -2,26 +2,27 @@
 
 namespace App\Model;
 
-use DateTimeInterface;
-
+use DateTime;
+use DateTimeImmutable;
 
 interface TimeStampInterface
 {
-    // public function getCreatedAt(): ?\DateTimeInterface;
-  
-    // public function setCreatedAt(\DateTimeInterface $createdAt);
  
-    // public function getUpdatedAt(): ?\DateTimeInterface;
+    // public function getCreatedAt(): ?\DateTimeImmutable;
   
-    // public function setUpdatedAt(\DateTimeInterface $updatedAt);
+    // public function setCreatedAt(\DateTimeImmutable $createdAt);
+ 
+    // public function getUpdatedAt(): ?\DateTimeImmutable;
+  
+    //public function setUpdatedAt(\DateTimeImmutable $updatedAt);
 
-     public function getCreatedAt(): ?\DateTimeInterface;
+    public function getCreatedAt(): ?DateTimeImmutable;
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self;
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self;
 
-    public function getUpdatedAt(): ?\DateTimeInterface;
+    public function getUpdatedAt(): ?\DateTimeImmutable;
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self;
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self;
 
    
 }
