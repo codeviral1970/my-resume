@@ -48,12 +48,12 @@ class HomeController extends AbstractController
     $this->about = $about;
   }
 
-  #[Route('/', name: 'app_home')]  
   /**
    * index route 
    *
    * @return Response
    */
+  #[Route('/', name: 'app_home')]  
   public function index(): Response
   {
     $services = $this->services->findAll();
@@ -65,12 +65,12 @@ class HomeController extends AbstractController
     ]);
   }
 
-  #[Route('/a-propos', name: 'app_about')]  
-  /**
+   /**
    * about route 
    *
    * @return void
    */
+  #[Route('/a-propos', name: 'app_about')]  
   public function about()
   { 
     $abouts = $this->about->findAll();
@@ -103,15 +103,15 @@ class HomeController extends AbstractController
     return $this->render('myBlog/blog.html.twig');
   }
 
-  #[Route('/contact', name: 'app_contact')]  
   /**
    * contact route 
    *
    * @return void
-   */
+  */
+  #[Route('/contact', name: 'app_contact')]  
   public function contact(
     Request $request, 
-    MailerService $mailer,
+    MailerInterface $mailer,
     LoggerInterface $logger,
     EntityManagerInterface $manager
     ): Response
@@ -131,12 +131,23 @@ class HomeController extends AbstractController
       $manager->persist($contact);
       $manager->flush();
       
-      $name = $contact->getName();
-      $message = $contact->getMessage();
-      $contactemail = $contact->getEmail();
-      $contactSubject = $contact->getSubject();
+      // $name = $contact->getName();
+      // $message = $contact->getMessage();
+      // $contactEmail = $contact->getEmail();
+      // $contactSubject = $contact->getSubject();
 
-      $mailer->sendEmail($contactemail, $contactSubject, $name, $message );
+    
+      $email = (new TemplatedEmail())
+      ->from($contact->getEmail())
+      ->to('manbanhduc@gmail.com')
+      ->subject($contact->getSubject())
+      ->htmlTemplate('email/welcome.html.twig')
+      ->context([
+        'name' => $contact->getName(),
+        'message' => $contact->getEmail()
+      ]);
+
+       $mailer->send($email);
 
       return $this->redirectToRoute('app_home');
 

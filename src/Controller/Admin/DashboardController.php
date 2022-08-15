@@ -37,7 +37,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
-      //return $this->render('admin/admin.html.twig');
+      //return $this->render('bundles/easyAdminBundle/admin.html.twig');
       
         $url = $this->adminUrlGenerator->setController(UserCrudController::class)->generateUrl();
 

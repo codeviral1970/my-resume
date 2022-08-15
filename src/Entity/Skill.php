@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Model\TimeStampInterface;
 use App\Repository\SkillRepository;
+use DateTimeImmutable;
 
 #[ORM\Entity(repositoryClass: SkillRepository::class)]
 class Skill
@@ -23,6 +24,11 @@ class Skill
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    public function __construct()
+    {
+      $this->createdAt = new DateTimeImmutable();
+      $this->updatedAt = new DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {

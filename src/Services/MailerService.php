@@ -24,7 +24,7 @@ class MailerService
       ->from($email)
       ->to('manbanhduc@gmail.com')
       ->subject($subject)
-      ->htmlTemplate('email/email.welcome.html.twig')
+      ->htmlTemplate('email/welcome.html.twig')
       ->context([
         'user' => $userName,
         'message' => $message
