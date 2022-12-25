@@ -6,6 +6,7 @@
 
 {% include "components/_nav.html.twig" with {class: 'line'} %}
 
+
 <div class="flex justify-center items-center w-screen h-screen ">
 <div class="w-3/6">
         <form method="post">
@@ -18,7 +19,11 @@
                     You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% endif %}
-
+             <div class="">
+                <div>
+                    <span>GOOGLE CONNECT</span>
+                </div>
+            </div>
             <h1 class="text-xl text-center font-bold mb-10">Se connecter</h1>
             <label for="inputEmail" class="text-white block mb-1 text-xl font-bold">Votre email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="w-full border border-input-border bg-input px-4 py-4" autocomplete="email" required autofocus>
@@ -33,7 +38,8 @@
             </button>
         </form>
     </div>
-
 </div>
+
+
 
 {% endblock %}

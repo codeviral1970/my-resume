@@ -36,20 +36,36 @@
               <span class="absolute w-[40px] h-1 bg-theme bottom-0 left-[185px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
             </a> 
           </li>
-          {# <a class="group" href="{{ path('app_home') }}#blog">
-          Blog
-          <span class="absolute w-[40px] h-1 bg-theme bottom-0 left-[333px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
-          </a> #}
+          <li class="nav-item {% if route == 'app_contact' %} active {% endif %}">
+          <a class="group uppercase" href="{{ path('app_contact') }}">
+          Contact
+          <span class="absolute w-[70px] h-1 bg-theme bottom-0 left-[275px] rounded transform scale-x-0 group-hover:scale-x-100 transition ease-bloob"></span>
+          </a> 
+          </li>
         </ul>
-        <a href="{{ path('app_contact') }}" >
-            <button class="px-6 py-2 bg-theme font-bold rounded-md uppercase">Contact </button>
-        </a>
+      
         {% if is_granted('ROLE_ADMIN') %}
-          <a href="{{ path('app_admin') }}">
-            <button class="px-6 py-2 bg-theme font-bold rounded-md">Dashboard</button>
-          </a>
-           <a href="{{ path('app_logout') }}">
-            <button class="px-6 py-2 bg-theme font-bold rounded-md">Se <span class="uppercase">Deconnecter</span></button>
+          <button class="flex justify-center items-center group relative" id="user-btn">
+            <span class=" border rounded-full p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+            </span>
+          </button>
+          <div class="hidden absolute border top-full mt-3 rounded p-3 z-10 right-0" id="user-menu">
+              <div class="flex-col justify-center items-center">
+                <ul>
+                  <li><a href="{{ path('app_admin') }}" class="hover:bg-gray-300">
+                  <span>Dashboard</span>
+                </a></li>
+                  <li><a href="">Mon compte</a></li>
+                  <li>  <a href="{{ path('app_logout') }}" class="hover:bg-gray-300"><span>Logout</span></a></li>
+                </ul>
+              </div> 
+            </div>
+        {% else %}
+          <a href="{{ path('app_login') }}" >
+            <button class="px-6 py-2 bg-theme font-bold rounded-md uppercase">Login </button>
           </a>
         {% endif %}
 
@@ -70,5 +86,15 @@
     <a href="#work" class="block hover:text-selected-text">A propos</a>
     <a href="#services" class="block hover:text-selected-text">Services</a>
     <a href="#blog" class="block hover:text-selected-text">Blog</a>
+    {% if is_granted('ROLE_ADMIN') %}
+       <a href="{{ path('app_admin') }}" class="block hover:text-selected-text">
+          <span>Dashboard</span>
+        </a>
+        <a href="{{ path('app_logout') }}" class="block hover:text-selected-text">Logout</a>
+    {% else %}
+      <a href="{{ path('app_login') }}" >
+        <button class="px-6 py-2 bg-theme font-bold rounded-md uppercase">Login </button>
+      </a>
+    {% endif %}
   </div>
 </header>

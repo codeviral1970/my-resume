@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    purge: [
+  purge: [
     './templates/**/*.html.twig',
     './assets/**/*.css',
     './assets/**/*.js',
@@ -14,7 +14,7 @@ module.exports = {
         'theme': '#FAC748',
         'secondary': '#9191A4',
         'badge': '#3F3F51',
-        'inut-border': '#565666',
+        'input-border': '#565666',
         'input': '#2A2A35'
       },
       fontFamily: {
@@ -26,7 +26,7 @@ module.exports = {
       keyframes: {
         blob: {
           "0%": {
-              transform: "translate(0px, 0px) scale(1)",
+            transform: "translate(0px, 0px) scale(1)",
           },
           "33%": {
             transform: "translate(30px, -50px) scale(1.1)",
@@ -49,8 +49,13 @@ module.exports = {
       },
     },
   },
-    plugins: [],
-  
+  variants: {
+    extend: {
+      display: ['group-focus']
+    },
+  },
+  plugins: [],
+
 }
 
 //FAC748

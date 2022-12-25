@@ -28,6 +28,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 class HomeController extends AbstractController
 {
@@ -43,7 +45,8 @@ class HomeController extends AbstractController
     private ExperienceItemRepository $experienceItem,
     private EducationRepository $education,
     private ServicesRepository $services,
-    private MyWorkRepository $work)
+    private MyWorkRepository $work,
+    private ChartBuilderInterface $chartBuilder)
   {
     $this->about = $about;
   }
@@ -61,7 +64,8 @@ class HomeController extends AbstractController
 
     return $this->render('home/index.html.twig', [
       'services' => $services,
-      'works' => $works
+      'works' => $works,
+      'chart' => $this->createChart()
     ]);
   }
 
@@ -182,5 +186,30 @@ class HomeController extends AbstractController
     public function getActualRoute(string $value, string $route): string
     {
         return $value === $route ? 'active' : '';
+    }
+
+    private function createChart(): Chart
+    {
+        $chart = $this->chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart->setData([
+            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            'datasets' => [
+                [
+                    'label' => 'My First dataset',
+                    'backgroundColor' => 'rgb(255, 99, 132)',
+                    'borderColor' => 'rgb(255, 99, 132)',
+                    'data' => [0, 10, 5, 2, 20, 30, 45],
+                ],
+            ],
+        ]);
+        $chart->setOptions([
+            'scales' => [
+                'y' => [
+                   'suggestedMin' => 0,
+                   'suggestedMax' => 100,
+                ],
+            ],
+        ]);
+        return $chart;
     }
 }

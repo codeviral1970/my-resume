@@ -24,6 +24,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="github_id", type="string", length=255, nullable=true, options={"default"="NULL"})
+     */
+    private $githubId;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="github_access_token", type="string", length=255, nullable=true, options={"default"="NULL"})
+     */
+    private $githubAccessToken;
+
+    /**
      * @var string The hashed password
      */
     #[ORM\Column]
@@ -115,4 +129,52 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
  
+
+    /**
+     * Get the value of githubId
+     *
+     * @return  string|null
+     */ 
+    public function getGithubId()
+    {
+        return $this->githubId;
+    }
+
+    /**
+     * Set the value of githubId
+     *
+     * @param  string|null  $githubId
+     *
+     * @return  self
+     */ 
+    public function setGithubId($githubId)
+    {
+        $this->githubId = $githubId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of githubAccessToken
+     *
+     * @return  string|null
+     */ 
+    public function getGithubAccessToken()
+    {
+        return $this->githubAccessToken;
+    }
+
+    /**
+     * Set the value of githubAccessToken
+     *
+     * @param  string|null  $githubAccessToken
+     *
+     * @return  self
+     */ 
+    public function setGithubAccessToken($githubAccessToken)
+    {
+        $this->githubAccessToken = $githubAccessToken;
+
+        return $this;
+    }
 }

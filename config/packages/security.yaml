@@ -4,23 +4,33 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
+        oauth:
+            id: knpu.oauth2.user_provider
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
                 class: App\Entity\User
                 property: email
+
+    enable_authenticator_manager: true
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
+            #anonymous: true
+            #lazy: true
             provider: app_user_provider
-            custom_authenticator: App\Security\AdminAuthenticator
+         
+            custom_authenticators: 
+              - App\Security\AdminAuthenticator
+              - App\Security\GoogleAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
+                  
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

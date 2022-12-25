@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 :root {
-    --sidebar-bg: #9FFFCB;
+    --sidebar-bg: #EF476F;
+    --sidebar-menu-color: white;
+    --sidebar-menu-icon-color: white;
+    --sidebar-menu-header-color: red;
 }

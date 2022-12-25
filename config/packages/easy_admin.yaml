@@ -1,0 +1,4 @@
+# easy_admin:
+#     user:
+#         avatar_property_path: 'image'
+#         avatar_uri_path: '%app.path.user_profile%/'

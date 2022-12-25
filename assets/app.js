@@ -13,8 +13,8 @@ import $ from 'jquery/dist/jquery';
 window.jQuery = $;
 window.$ = $;
 
-import './js/main';
-
-
 // start the Stimulus application
 import './bootstrap';
+
+import './js/main';
+import './js/menu';

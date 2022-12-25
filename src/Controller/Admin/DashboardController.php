@@ -12,13 +12,16 @@ use App\Entity\Services;
 use App\Entity\Education;
 use App\Entity\Experience;
 use App\Entity\ExperienceItem;
+use App\Repository\UserRepository;
 use App\Controller\Admin\UserCrudController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 use Symfony\Component\Security\Core\User\UserInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -27,38 +30,29 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 class DashboardController extends AbstractDashboardController
 {
     private $adminUrlGenerator;
+    private $userRepository;
+    private $chartBuilder;
 
-    public function __construct(AdminUrlGenerator $adminUrlGenerator)
+    public function __construct(
+      AdminUrlGenerator $adminUrlGenerator,
+      UserRepository $userRepository,
+      ChartBuilderInterface $chartBuilder)
     {
         $this->adminUrlGenerator = $adminUrlGenerator;
+        $this->userRepository = $userRepository;
+        $this->chartBuilder = $chartBuilder;
     }
 
     #[IsGranted("ROLE_ADMIN")]
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
-      //return $this->render('bundles/easyAdminBundle/admin.html.twig');
-      
-        $url = $this->adminUrlGenerator->setController(UserCrudController::class)->generateUrl();
+        $users = $this->userRepository->findAll();
 
-        return $this->redirect($url);
-        //return parent::index();
-
-        // Option 1. You can make your dashboard redirect to some common page of your backend
-        //
-        // $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl());
-
-        // Option 2. You can make your dashboard redirect to different pages depending on the user
-        //
-        // if ('jane' === $this->getUser()->getUsername()) {
-        //     return $this->redirect('...');
-        // }
-
-        // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
-        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
-        //
-        //return $this->render('admin/admin.html.twig');
+        return $this->render('admin/index.html.twig', [
+            'users' => $users,
+            'chart' => $this->createChart(),
+        ]);
     }
 
     public function configureDashboard(): Dashboard
@@ -70,8 +64,11 @@ class DashboardController extends AbstractDashboardController
     public function configureUserMenu(UserInterface $user): UserMenu
     {
       //dd($user);
+
+      $user->getRoles();
         return parent::configureUserMenu($user)
             ->setAvatarUrl($user->getUserIdentifier());
+            
     }
 
     public function configureMenuItems(): iterable
@@ -112,5 +109,30 @@ class DashboardController extends AbstractDashboardController
     {
         return parent::configureAssets()
             ->addWebpackEncoreEntry('admin');
+    }
+
+    private function createChart(): Chart
+    {
+        $chart = $this->chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart->setData([
+            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            'datasets' => [
+                [
+                    'label' => 'My First dataset',
+                    'backgroundColor' => 'rgb(255, 99, 132)',
+                    'borderColor' => 'rgb(255, 99, 132)',
+                    'data' => [0, 10, 5, 2, 20, 30, 45],
+                ],
+            ],
+        ]);
+        $chart->setOptions([
+            'scales' => [
+                'y' => [
+                   'suggestedMin' => 0,
+                   'suggestedMax' => 100,
+                ],
+            ],
+        ]);
+        return $chart;
     }
 }
