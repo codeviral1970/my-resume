@@ -27,6 +27,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
+
+
 class DashboardController extends AbstractDashboardController
 {
     private $adminUrlGenerator;
@@ -34,11 +36,9 @@ class DashboardController extends AbstractDashboardController
     private $chartBuilder;
 
     public function __construct(
-      AdminUrlGenerator $adminUrlGenerator,
       UserRepository $userRepository,
       ChartBuilderInterface $chartBuilder)
     {
-        $this->adminUrlGenerator = $adminUrlGenerator;
         $this->userRepository = $userRepository;
         $this->chartBuilder = $chartBuilder;
     }
@@ -58,7 +58,8 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Code viral');
+            ->setTitle('Code viral')
+            ->renderContentMaximized();
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu

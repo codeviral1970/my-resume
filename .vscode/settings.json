@@ -12,22 +12,26 @@
 
 
 	// Set up some defaults
-	"prettier.disableLanguages": ["html"],
-	"prettier.tabWidth": 2,
-	"prettier.useTabs": false,
-	"prettier.singleQuote": true,
+	//"prettier.disableLanguages": ["html"],
+    "prettier.tabWidth": 2,
+    "prettier.useTabs": false,
+    "prettier.singleQuote": true,
 
-  "emmet.includeLanguages": {
-  "twig": "html",
-  "javascript": "javascriptreact"
-  },
+    "emmet.includeLanguages": {
+      "twig": "html",
+      "javascript": "javascriptreact"
+    },
 
   "indentRainbow.includedLanguages": [
-    "twig"
+    "twig",
     "html",
     "css",
     "javascript",
     "sass",
     "php",
   ],
+
+  "files.exclude": {
+     "**/.git": false
+}
 }

@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "cross-env": "^7.0.3",
+        "file-loader": "^6.2.0",
         "jquery": "^3.6.0"
     },
     "engines": {
