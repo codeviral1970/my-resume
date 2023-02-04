@@ -2,9 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Model\TimeStampInterface;
 use App\Repository\MyWorkRepository;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MyWorkRepository::class)]
 class MyWork
@@ -48,6 +47,4 @@ class MyWork
 
         return $this;
     }
-
-
 }

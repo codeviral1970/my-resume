@@ -8,10 +8,10 @@ class HomePageTest extends WebTestCase
 {
     public function testHomePage(): void
     {
-      $client = static::createClient();
-      $crawler = $client->request('GET', '/');
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/');
 
-      $this->assertResponseIsSuccessful();
-      $this->assertSelectorTextContains('h1', 'Welcome');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'Welcome');
     }
 }

@@ -17,6 +17,7 @@
         "league/oauth2-facebook": "^2.2",
         "league/oauth2-github": "^3.0",
         "league/oauth2-google": "^4.0",
+        "liip/imagine-bundle": "^2.10",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.15",
         "sensio/framework-extra-bundle": "^6.1",
@@ -51,20 +52,22 @@
         "symfony/web-link": "6.0.*",
         "symfony/yaml": "6.0.*",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "vich/uploader-bundle": "*"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^7.1",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "friendsofphp/php-cs-fixer": "^3.13",
         "phpunit/phpunit": "^9.5",
-        "symfony/webpack-encore-bundle": "^1.15",
         "symfony/browser-kit": "6.0.*",
         "symfony/css-selector": "6.0.*",
         "symfony/debug-bundle": "6.0.*",
-        "symfony/maker-bundle": "^1.45",
+        "symfony/maker-bundle": "^1.48",
         "symfony/phpunit-bridge": "^6.1",
         "symfony/stopwatch": "6.0.*",
-        "symfony/web-profiler-bundle": "6.0.*"
+        "symfony/web-profiler-bundle": "6.0.*",
+        "symfony/webpack-encore-bundle": "^1.15"
     },
     "config": {
         "allow-plugins": {
@@ -111,7 +114,14 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+         "fix": "php-cs-fixer fix",
+        "check": [
+          "php-cs-fixer fix --dry-run --diff"
+        ],
+        "stan": [
+          "phpstan"
+        ] 
     },
     "conflict": {
         "symfony/symfony": "*"

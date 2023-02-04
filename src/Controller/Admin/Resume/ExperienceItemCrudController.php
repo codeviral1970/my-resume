@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Resume;
 
 use App\Entity\ExperienceItem;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ExperienceItemCrudController extends AbstractCrudController
 {
@@ -15,7 +15,6 @@ class ExperienceItemCrudController extends AbstractCrudController
         return ExperienceItem::class;
     }
 
-  
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -24,5 +23,4 @@ class ExperienceItemCrudController extends AbstractCrudController
             AssociationField::new('experience'),
         ];
     }
-    
 }

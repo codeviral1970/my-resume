@@ -33,5 +33,7 @@
 
   "files.exclude": {
      "**/.git": false
-}
+},
+"namespaceResolver.sortOnSave": false,
+"namespaceResolver.highlightOnSave": true
 }

@@ -2,14 +2,13 @@
 
 namespace App\Entity;
 
+use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Model\TimeStampInterface;
-use App\Repository\ContactRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
-class Contact 
+class Contact
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -30,7 +29,6 @@ class Contact
         min: 6
     )]
     private ?string $message = null;
-
 
     public function getId(): ?int
     {
@@ -84,5 +82,4 @@ class Contact
 
         return $this;
     }
-
 }
