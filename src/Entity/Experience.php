@@ -2,11 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Model\TimeStampInterface;
 use App\Repository\ExperienceRepository;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 class Experience
@@ -28,7 +27,6 @@ class Experience
     #[ORM\OneToMany(mappedBy: 'experience', targetEntity: ExperienceItem::class)]
     private Collection $experienceItems;
 
-  
     public function __construct()
     {
         $this->experienceItems = new ArrayCollection();
@@ -107,8 +105,6 @@ class Experience
 
     public function __toString()
     {
-      return $this->enterpriseName;
+        return $this->enterpriseName;
     }
-
-  
 }

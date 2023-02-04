@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Resume;
 
-use App\Entity\Education;
+use App\Entity\Hobbies;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class EducationCrudController extends AbstractCrudController
+class HobbiesCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Education::class;
+        return Hobbies::class;
     }
 
     /*

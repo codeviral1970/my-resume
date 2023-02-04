@@ -2,13 +2,11 @@
 
 namespace App\Entity;
 
-
-use Doctrine\ORM\Mapping as ORM;
-use App\Model\TimeStampInterface;
 use App\Repository\EducationRepository;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EducationRepository::class)]
-class Education 
+class Education
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -25,8 +23,8 @@ class Education
     private ?string $location = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nb_year = null;    
-   
+    private ?string $nb_year = null;
+
     public function getId(): ?int
     {
         return $this->id;

@@ -2,12 +2,10 @@
 
 namespace App\Entity;
 
-
-use Doctrine\ORM\Mapping as ORM;
-use App\Model\TimeStampInterface;
 use App\Repository\UserRepository;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -128,25 +126,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
- 
-
     /**
-     * Get the value of githubId
+     * Get the value of githubId.
      *
-     * @return  string|null
-     */ 
+     * @return string|null
+     */
     public function getGithubId()
     {
         return $this->githubId;
     }
 
     /**
-     * Set the value of githubId
+     * Set the value of githubId.
      *
-     * @param  string|null  $githubId
+     * @param string|null $githubId
      *
-     * @return  self
-     */ 
+     * @return self
+     */
     public function setGithubId($githubId)
     {
         $this->githubId = $githubId;
@@ -155,22 +151,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Get the value of githubAccessToken
+     * Get the value of githubAccessToken.
      *
-     * @return  string|null
-     */ 
+     * @return string|null
+     */
     public function getGithubAccessToken()
     {
         return $this->githubAccessToken;
     }
 
     /**
-     * Set the value of githubAccessToken
+     * Set the value of githubAccessToken.
      *
-     * @param  string|null  $githubAccessToken
+     * @param string|null $githubAccessToken
      *
-     * @return  self
-     */ 
+     * @return self
+     */
     public function setGithubAccessToken($githubAccessToken)
     {
         $this->githubAccessToken = $githubAccessToken;

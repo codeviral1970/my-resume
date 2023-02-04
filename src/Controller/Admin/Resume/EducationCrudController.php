@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Resume;
 
-use App\Entity\Hobbies;
+use App\Entity\Education;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class HobbiesCrudController extends AbstractCrudController
+class EducationCrudController extends AbstractCrudController
 {
-    public static function getEntityFqcn(): string
-    {
-        return Hobbies::class;
-    }
+  public static function getEntityFqcn(): string
+  {
+    return Education::class;
+  }
 
-    /*
+  /*
     public function configureFields(string $pageName): iterable
     {
         return [

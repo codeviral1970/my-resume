@@ -2,9 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Model\TimeStampInterface;
 use App\Repository\ExperienceItemRepository;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ExperienceItemRepository::class)]
 class ExperienceItem
@@ -48,5 +47,4 @@ class ExperienceItem
 
         return $this;
     }
-
 }
